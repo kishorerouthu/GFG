@@ -3,6 +3,7 @@ package com.tutorial.gfg.arrays;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 
 /**
@@ -64,6 +65,7 @@ public class LexiNextPermutation {
             l++;
             r--;
         }
+        Arrays.sort(c, l, r);
     }
 
     private static boolean nextPermutation(char c[]) {
