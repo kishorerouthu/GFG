@@ -18,6 +18,7 @@ public class ReverseArray {
         reverse(a, n);
         printArray(a, n);
     }
+
     private static void reverse(int a[], int n) {
         int start = 0;
         int end = n-1;
