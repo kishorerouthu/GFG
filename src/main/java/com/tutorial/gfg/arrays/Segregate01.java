@@ -2,7 +2,16 @@ package com.tutorial.gfg.arrays;
 
 /**
  * @author Kishore Routhu on 22/6/17 8:57 PM.
+ *
+ * Problem Statement : Segregate 0s and 1s in an array
+ *
+ * Explanation : You are given an array of 0s and 1s in random order.
+ * Segregate 0s on left side and 1s on right side of the array. Traverse array only once.
+ *
+ * Input array   =  [0, 1, 0, 1, 0, 0, 1, 1, 1, 0]
+ * Output array =  [0, 0, 0, 0, 0, 1, 1, 1, 1, 1]
  */
+
 public class Segregate01 {
 
     public static void main(String[] args) {
@@ -49,6 +58,7 @@ public class Segregate01 {
          b) Keep decrementing index right while there 1s at it
          c) If left < right then swap a[left] with a[right]
 
+         Time Complexity : O(n):
      */
     private static void sort2(int a[], int n) {
 
