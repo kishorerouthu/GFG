@@ -31,6 +31,7 @@ public class TwoRepeatingElements {
         //printRepeated1(a, n);
         //printRepeated2(a, n);
         printRepeated3(a, n);
+        printRepeated4(a, n);
     }
 
     /*
@@ -133,4 +134,46 @@ public class TwoRepeatingElements {
 
         return f;
     }
+
+    /*
+    Method 4 (Use array elements as index)
+    This method assumes that all the numbers in array are positive and
+    marking elements negative and finding the repeated negatives.
+
+    Traverse the array. Do following for every index i of A[].
+    1) Check for sign of A[abs(A[i])]
+    2) If positive then it negative by   A[abs(A[i])]=-A[abs(A[i])];
+    3) Else  // i.e., A[abs(A[i])] is negative element (ith element of list) is a repetition
+
+    Example: A[] =  {1, 1, 2, 3, 2}
+
+    For i=0;
+    Check sign of A[abs(A[0])] which is A[1].  A[1] is positive, so make it negative.
+    Array now becomes {1, -1, 2, 3, 2}
+
+    i=1;
+    Check sign of A[abs(A[1])] which is A[1].  A[1] is negative, so A[1] is a repetition.
+
+    i=2;
+    Check sign of A[abs(A[2])] which is A[2].  A[2] is  positive, so make it negative. '
+    Array now becomes {1, -1, -2, 3, 2}
+
+    i=3;
+    Check sign of A[abs(A[3])] which is A[3].  A[3] is  positive, so make it negative.
+    Array now becomes {1, -1, -2, -3, 2}
+
+    i=4;
+    Check sign of A[abs(A[4])] which is A[2].  A[2] is negative, so A[4] is a repetition.
+    */
+    private static void printRepeated4(int a[], int n) {
+        for (int i = 0; i < n+2; i ++) {
+            int abs = Math.abs(a[i]);
+            if (a[abs] >= 0)
+                a[abs] = -a[abs];
+            else
+                System.out.println(Math.abs(a[abs]));
+
+        }
+    }
+
 }
