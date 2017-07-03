@@ -2,7 +2,8 @@ package com.css.gfg.arrays;
 
 /**
  Problem Statement :
- Find duplicates in O(n) time and O(1) extra space | Set 1
+
+ Find duplicates in O(n) time and O(1) extra space
 
  Explanation :
  Given an array of n elements which contains elements from 0 to n-1, with any of these numbers appearing any number of times.
