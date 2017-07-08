@@ -1,10 +1,44 @@
 package com.css.gfg.linkedlist;
 
 /**
+   Problem Statement :
+   Insert a node in linked list
+
+   Explanation :
+   A node can be added in three ways
+   1) At the front of the linked list
+   2) After a given node.
+   3) At the end of the linked list.
+
+     Add a node at the front:
+     The new node is always added before the head of the given Linked List.
+     And newly added node becomes the new head of the Linked List.
+
+     Example:
+     Linked List is 10->15->20->25 and we add an item 5 at the front,
+     then the Linked List becomes 5->10->15->20->25.
+
+     Time Complexity O(1)
+
+     Add a node after a given node:
+     We are given pointer to a node,
+     and the new node is inserted after the given node.
+
+
+     Add a node at the end:
+     The new node is always added after the last node of the given Linked List.
+
+     Example :
+     Linked List is 5->10->15->20->25 and we add an item 30 at the end,
+     then the Linked List becomes 5->10->15->20->25->30.
+     Since a Linked List is typically represented by the head of it,
+     we have to traverse the list till end and then change the next of last node to new node.
+
  * @author Kishore Routhu on 8/7/17 9:19 AM.
  */
 public class InsertNode {
 
+    /* Driver method to test */
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
         list.push(3);
@@ -16,6 +50,7 @@ public class InsertNode {
 
         list.append(10);
 
+        System.out.println("Linked List : ");
         list.printList();
     }
 
@@ -39,10 +74,10 @@ public class InsertNode {
         }
 
         /*Insert the node at front of linked list*/
-        public void push(int new_data) {
+        public void push(int data) {
 
             /* Create node and set the data */
-            Node new_node = new Node(new_data);
+            Node new_node = new Node(data);
 
             /* If list is empty then make new_node as head */
             if (head == null) {
@@ -95,7 +130,7 @@ public class InsertNode {
         public void printList() {
             Node next_node = head;
             while (next_node != null) {
-                System.out.println(next_node.data);
+                System.out.printf("%d ",next_node.data);
                 next_node = next_node.next;
             }
         }

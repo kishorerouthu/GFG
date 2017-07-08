@@ -2,29 +2,35 @@ package com.css.gfg.linkedlist;
 
 /**
  * Problem Statement :
- * Given a 'key' delete the first occurrence of this key in linked list.
- *
- * To delete a node from linked list, we need to do the following steps
- * 1) Find previous node of node to be deleted
- * 2) Change next of previous node
- * 3) Free memory for the node to delete
- *
+   Given a 'key' delete the first occurrence of this key in linked list.
+
+   To delete a node from linked list, we need to do the following steps
+   1) Find previous node of node to be deleted
+   2) Change next of previous node
+   3) Free memory for the node to delete
+   Time Complexity O(n)
+
+   Blog Post:
+   https://csstack.wordpress.com/2017/07/08/deleting-a-node-from-linked-list/
+
  * @author Kishore Routhu on 8/7/17 8:17 PM.
  */
 public class DeleteNode {
 
+    /* Driver method to test */
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
         list.push(5);
         list.push(8);
         list.push(3);
         list.push(1);
+        list.push(8);
         list.push(7);
 
         System.out.println("Linked List before deleting the Node :");
         list.printList();
 
-        list.delete(5);
+        list.delete(8);
         System.out.println("\nLinked List after deleting the Node :");
         list.printList();
 
