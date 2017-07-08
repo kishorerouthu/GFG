@@ -32,11 +32,9 @@ public class CeilingInSortedArray {
         else
             System.out.printf("Ceil of %d is %d", k, a[p]);
 
-
     }
 
     private static int ceilSearch(int a[], int l, int r, int k) {
-
 
         if (k <= a[l])
             return l;
