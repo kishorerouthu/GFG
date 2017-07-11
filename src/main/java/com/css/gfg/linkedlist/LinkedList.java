@@ -56,8 +56,10 @@ public class LinkedList {
         Node current = head;
 
         while (current != null) {
-            System.out.printf("%d ", current.data);
+            System.out.printf("%d", current.data);
             current = current.next;
+            if (current != null)
+                System.out.printf("->");
         }
     }
 }
