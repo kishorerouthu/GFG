@@ -67,5 +67,4 @@ public class AmicableNumber {
         }
         return sum;
     }
-
 }

@@ -13,7 +13,7 @@ public class ArrayLeaders {
     public static void main(String[] args) {
         int a[] = new int[]{16, 17, 4, 3, 5, 2};
         int n = a.length;
-        findLeaders2(a, n);
+        findLeaders(a, n);
     }
 
     /*

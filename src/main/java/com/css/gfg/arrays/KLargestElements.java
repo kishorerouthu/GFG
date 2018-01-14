@@ -24,10 +24,10 @@ public class KLargestElements {
 
     public static void main(String[] args) {
         int a[] = new int[] {1, 23, 12, 9, 30, 2, 50};  //50 23 30
-        //kLargest2(a, 3);
-        kLargest4(a, a.length, 3);
-        for (int v : a)
-            System.out.println(v);
+        kLargest2(a, 3);
+        //kLargest4(a, a.length, 3);
+       /* for (int v : a)
+            System.out.println(v);*/
     }
 
     /*
@@ -54,8 +54,8 @@ public class KLargestElements {
 
         for (int j = k; j < n; j++) {
             int min_index = 0;
-            int min_value = Integer.MAX_VALUE;
-            for (int i = 0; i < k; i++) {
+            int min_value = temp[0];
+            for (int i = 1; i < k; i++) {
                 if (temp[i] < min_value) {
                     min_value = temp[i];
                     min_index = i;
@@ -127,4 +127,6 @@ public class KLargestElements {
                 heapify(a, n, i);
            }
        }
+
+
 }

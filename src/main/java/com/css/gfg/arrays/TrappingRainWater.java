@@ -61,7 +61,7 @@ public class TrappingRainWater {
 
     private static int findWater(int a[], int n) {
 
-        int left[] = new int[n]; //contains left higest bar for each array element
+        int left[] = new int[n]; //contains left highest bar for each array element
         left[0] = a[0];
         for (int i = 1; i < n; i++)
             left[i] = Math.max(left[i-1], a[i]);
