@@ -5,36 +5,17 @@ package com.css.gfg.bst;
  */
 public class BinarySearchTree {
 
-    class Node {
-        int key; //Value of node
-        Node left; //Reference to Left subtree
-        Node right; //Reference to Right subtree
-
-        public Node(int key) {
-            this.key = key;
-            left = right = null;
-        }
-
-        @Override
-        public String toString() {
-            return "Node{" +
-                    "key=" + key +
-                    ", left=" + left +
-                    ", right=" + right +
-                    '}';
-        }
-    }
-
-
-
-    //root of BST
+    /**
+     * Root of BST
+     */
     Node root;
 
-    //Insert new node into BST
+    /**
+     * Insert new node to the BST
+     */
     public void insert(int key) {
         root = insertRec(root, key);
     }
-
     private Node insertRec(Node root, int key) {
 
         if (root == null) {
@@ -50,6 +31,9 @@ public class BinarySearchTree {
         return root;
     }
 
+    /**
+     * Search the given key in BST
+     */
     public Node search(int key) {
         return searchRec(root, key);
     }
@@ -63,22 +47,78 @@ public class BinarySearchTree {
         return searchRec(root.right, key);
     }
 
-
-    //Inorder traversal of BST
-    void inorder() {
+    /**
+     * Inorder traversal of BST
+     * Example:           50
+     *               30        70
+     *            20   40    60   80
+     *
+     *  Inorder Traversal [20 30 40 50 60 70 80]
+     */
+    public void inorder() {
+        System.out.print("[");
         inOrderRec(root);
+        System.out.print("]");
     }
-
     private void inOrderRec(Node root) {
         if (root != null) {
             inOrderRec(root.left);
-            System.out.println(root.key);
+            System.out.printf(" %d ", root.key);
             inOrderRec(root.right);
         }
     }
 
-    //Delete node from BST
-    void delete(int key) {
+    /**
+     * PreOrder traversal of BST
+     * Example:           50
+     *               30        70
+     *            20   40    60   80
+     *
+     * PreOrder Traversal [50 30 20 40 70 60 80]
+     */
+    public void preOrder() {
+        System.out.print("[");
+        preOrder(root);
+        System.out.print("]");
+    }
+    private void preOrder(Node root) {
+        if (root != null) {
+            System.out.printf(" %d ", root.key);
+            preOrder(root.left);
+            preOrder(root.right);
+        }
+    }
+
+    /**
+     * PostOrder traversal of BST
+     * Example:           50
+     *               30        70
+     *            20   40    60   80
+     *
+     *  PostOrder Traversal [20 40 30 60 80 70 50]
+     */
+    public void postOrder() {
+        System.out.print("[");
+        postOrder(root);
+        System.out.print("]");
+    }
+    private void postOrder(Node root) {
+        if (root != null) {
+            postOrder(root.left);
+            postOrder(root.right);
+            System.out.printf(" %d ", root.key);
+        }
+    }
+
+    /**
+     * Delete node from BST
+     * There are three possibilities arises
+     * 1. Node to be deleted is leaf    : Simply remove from the tree
+     * 2. Node to be deleted has only one child : Copy the child node to the node and delete the child
+     * 3. Node to be deleted has two children : Find the inorder successor to the node. Copy contents of
+     *    inorder successor to the node and delete the inorder successor
+     */
+    public void delete(int key) {
         root = deleteRec(root, key);
     }
 
@@ -114,6 +154,7 @@ public class BinarySearchTree {
         return min;
     }
 
+    //Driver to test the BST operations
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree();
 
@@ -125,18 +166,55 @@ public class BinarySearchTree {
         tree.insert(60);
         tree.insert(80);
 
-        tree.inorder();
+        traverseBST(tree);
 
+        System.out.println();
         System.out.println("After removing 20 from tree ::");
         tree.delete(20);
         tree.inorder();
 
+        System.out.println();
         System.out.println("After removing 30 from tree ::");
         tree.delete(30);
         tree.inorder();
 
+        System.out.println();
         System.out.println("After removing 50 from tree ::");
         tree.delete(50);
         tree.inorder();
     }
+
+    private static void traverseBST(BinarySearchTree tree) {
+        System.out.print("InOrder traversal of BST: ");
+        tree.inorder();
+
+        System.out.println();
+        System.out.print("PreOrder traversal of BST: ");
+        tree.preOrder();
+
+        System.out.println();
+        System.out.print("PostOrder traversal of BST: ");
+        tree.postOrder();
+    }
+
+    public static class Node {
+        public int key; //Value of node
+        public Node left; //Reference to Left subtree
+        public Node right; //Reference to Right subtree
+
+        public Node(int key) {
+            this.key = key;
+            left = right = null;
+        }
+
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "key=" + key +
+                    ", left=" + left +
+                    ", right=" + right +
+                    '}';
+        }
+    }
+
 }
