@@ -3,7 +3,9 @@ package com.css.gfg.linkedlist;
 import com.css.gfg.linkedlist.LinkedList.Node;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class DetectLoop {
 
@@ -30,7 +32,7 @@ public class DetectLoop {
     }
 
     private static boolean detectLoop(Node head) {
-        final List<Node> list = new ArrayList<Node>();
+        final Set<Node> list = new HashSet<Node>();
         Node current = head;
         while (current != null) {
             if (list.contains(current)) {
