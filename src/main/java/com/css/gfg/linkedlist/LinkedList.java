@@ -1,5 +1,8 @@
 package com.css.gfg.linkedlist;
 
+import java.util.Arrays;
+import java.util.Stack;
+
 /**
  * @author Kishore Routhu on 10/7/17 4:58 PM.
  */
@@ -7,7 +10,8 @@ public class LinkedList {
 
     private Node head;
 
-    public class Node {
+    public  static
+    class Node {
         public int data;
         public Node next;
 
@@ -24,10 +28,26 @@ public class LinkedList {
         this.head = head;
     }
 
+    public LinkedList() {
+    }
+
+    public LinkedList(int... data) {
+        this();
+        Stack<Integer> s = new Stack();
+        if (data != null) {
+            for (int v : data) {
+                s.push(v);
+            }
+        }
+        while (!s.isEmpty()) {
+            this.push(s.pop());
+        }
+    }
+
     /**
      *
      * @param data new data to be push to LinkedList
-     * @return new head node of the LindeList
+     * @return new head node of the LinkedList
      */
     public Node push(int data) {
 
@@ -53,13 +73,18 @@ public class LinkedList {
 
     /* Prints all the elements in list starting from head Node */
     public void printList() {
-        Node current = head;
+        printList(this.head);
+    }
 
+    public static void printList(Node head) {
+        Node current = head;
+        System.out.printf("[");
         while (current != null) {
-            System.out.printf("%d", current.data);
+            System.out.printf(" %d ", current.data);
             current = current.next;
             if (current != null)
-                System.out.printf("->");
+                System.out.printf(",");
         }
+        System.out.printf("]");
     }
 }
