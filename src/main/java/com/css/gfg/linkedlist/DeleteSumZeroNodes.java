@@ -20,17 +20,15 @@ public class DeleteSumZeroNodes {
     public static void main(String[] args) {
         LinkedList list = new LinkedList(6, -6, 8, 4, -12, 9, 8, -8);
         LinkedList.Node head = list.getHead();
-        //LinkedList.printList(head);
         head = deleteUsingPrefixSum(head);
         System.out.println();
         LinkedList.printList(head);
 
         list = new LinkedList(4, 6, -10, 8, 9, 10, -19, 10, -18, 20, 25);
         head = list.getHead();
-        //LinkedList.printList(head);
-        head = deleteUsingPrefixSum(head);
+        LinkedList list1 = deletedUsingStack(head);
         System.out.println();
-        LinkedList.printList(head);
+        list1.printList();
     }
 
     /**
@@ -84,18 +82,28 @@ public class DeleteSumZeroNodes {
       }
     /**
      * Method 2: Using Stack
+     * @return
      */
-    private void deletedEle(LinkedList.Node head) {
+    private static LinkedList deletedUsingStack(LinkedList.Node head) {
         Stack<LinkedList.Node> stack = new Stack<LinkedList.Node>();
         LinkedList.Node current = head;
         while (current != null) {
             if (current.data < 0) {
-
+                int sum = current.data;
+                while (!stack.isEmpty()) {
+                    LinkedList.Node temp = stack.pop();
+                    sum += temp.data;
+                    if (sum == 0) {
+                        //current = stack.peek();
+                        break;
+                    }
+                }
             } else {
                 stack.push(current);
             }
             current = current.next;
         }
+        return new LinkedList(stack);
     }
 
 }

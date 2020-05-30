@@ -44,6 +44,25 @@ public class LinkedList {
         }
     }
 
+    public LinkedList(Stack<Node> s) {
+        this();
+        while (!s.isEmpty()) {
+            this.push(s.pop());
+        }
+    }
+
+    public Node push(Node node) {
+        if (isEmpty()) {
+            head = node;
+            return head;
+        }
+
+        node.next = head;
+        head = node;
+
+        return head;
+    }
+
     /**
      *
      * @param data new data to be push to LinkedList
