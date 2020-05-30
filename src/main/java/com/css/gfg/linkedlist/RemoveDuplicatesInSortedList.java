@@ -48,12 +48,7 @@ public class RemoveDuplicatesInSortedList {
 
     public static void main(String[] args) throws IOException {
 
-        int a[] = new int[]{11, 11, 11, 21, 43, 43, 60};
-
-        LinkedList list = new LinkedList();
-        for (int i = a.length - 1; i >= 0; i--)
-            list.push(a[i]);
-
+        LinkedList list = new LinkedList(11, 11, 11, 21, 43, 43, 60);
 
         System.out.println("Before removing duplicates ::");
         list.printList();
