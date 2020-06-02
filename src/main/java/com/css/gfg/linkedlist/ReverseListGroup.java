@@ -1,5 +1,7 @@
 package com.css.gfg.linkedlist;
 
+import com.css.gfg.linkedlist.LinkedList.Node;
+
 /**
  Problem Statement :
  Given a linked list of size N. The task is to reverse every k nodes (where k is an input to the function) in the linked list.
@@ -35,23 +37,18 @@ package com.css.gfg.linkedlist;
  */
 public class ReverseListGroup  {
     public static void main(String[] args) {
-        Node head = new Node(1);
-        Node node1 = new Node(2);
-        Node node2 = new Node(3);
-        Node node3 = new Node(4);
-        Node node4 = new Node(5);
-        Node node5 = new Node(6);
-        Node node6 = new Node(7);
-        Node node7 = new Node(8);
-
-        head.next = node1; node1.next = node2; node2.next = node3;
-        node3.next = node4; //node4.next = node5; node5.next = node6; node6.next = node7;
+        LinkedList list = new LinkedList(1, 2, 3, 4, 5, 6, 7, 8);
         int k = 3;
-        print(head);
-        head = reverse(head, k);
-        print(head);
+        Node head = list.getHead();
+        LinkedList.printList(head);
+        head = rreverse(head, k);
+        System.out.println();
+        LinkedList.printList(head);
     }
 
+    /**
+     * Iterative approach
+     */
     private static Node reverse(Node head, int k) {
         if (head == null) {
             return head;
@@ -81,12 +78,35 @@ public class ReverseListGroup  {
                 } else {
                     head2 = previous;
                     tail1.next = head2;
+                    if (tail2 != null) {
+                        tail2.next = null;
+                    }
                     tail1 = tail2;
+                    tail2 = current;
                 }
                 count = 1;
             }
         }
         return head;
+    }
+
+    private static Node rreverse(Node head, int k) {
+        Node next = null;
+        Node previous = null;
+        Node current = head;
+        int count = 0;
+        while (count < k && current != null) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+            count++;
+        }
+
+        if (next != null) {
+            head.next = rreverse(next, k);
+        }
+        return previous;
     }
 
     private static void print(Node head) {
@@ -101,17 +121,5 @@ public class ReverseListGroup  {
             current = current.next;
         }
         System.out.println(sb.toString());
-    }
-
-
-
-    static class Node {
-        int data;
-        Node next;
-
-        Node(int d) {
-            data = d;
-            next = null;
-        }
     }
 }
