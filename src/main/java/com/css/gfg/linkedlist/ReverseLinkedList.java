@@ -29,27 +29,21 @@ import com.css.gfg.linkedlist.LinkedList.Node;
 public class ReverseLinkedList {
 
     public static void main(String[] args) {
-        LinkedList list = new LinkedList();
-
-        list.push(1);
-        list.push(2);
-        list.push(3);
-        list.push(4);
-        list.push(5);
+        LinkedList list = new LinkedList(1, 2, 3, 4, 5);
 
         System.out.println("Before reverse :");
         list.printList();
 
-        Node newHead = reverse(list.getHead());
-        list.setHead(newHead);
-
+     /*   Node head = reverse(list.getHead());
         System.out.println("\nAfter reverse :");
-        list.printList();
+        LinkedList.printList(head);*/
 
+        Node head = reverseList(list.getHead());
+        LinkedList.printList(head);
     }
 
-    /*
-        Method1 : iterative
+    /**
+        Method1 : Iterative
         Iterate trough the linked list. In loop,
         1) change next to prev
         2) prev to current
@@ -70,5 +64,16 @@ public class ReverseLinkedList {
         }
         head = previous;
         return head;
+    }
+
+    /**
+     * Method2: Recursive
+     */
+    public static Node reverseList(Node head) {
+        if (head == null || head.next == null) return head;
+        Node p = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return p;
     }
 }
