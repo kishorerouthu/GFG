@@ -17,10 +17,18 @@ public class ReverseAlternativeKNodes {
         Node head = list.getHead();
         LinkedList.printList(head);
         System.out.println();
-        head = reverseKNodes(head, 3, true);
+        //head = reverseKNodes(head, 3, true);
+        head = reverseKNodesUsing2K(head, 3);
         LinkedList.printList(head);
     }
 
+    /**
+     * Method 1 using K iterations
+     * @param head
+     * @param k - Number of elements to reverse
+     * @param isReverse - Boolean specifies the current iteration is reverse or not
+     * @return - Head nod of new reverse list
+     */
     private static Node reverseKNodes(Node head, int k, boolean isReverse) {
         Node next = null;
         Node previous = null;
@@ -50,4 +58,37 @@ public class ReverseAlternativeKNodes {
 
         return isReverse? previous : head;
     }
+
+    /**
+     * Using 2K iterations : process reverse of K and other K nodes in one Go
+     * @param head
+     * @param k
+     * @return
+     */
+    private static  Node reverseKNodesUsing2K(Node head, int k) {
+        int c = 0;
+        Node next = null;
+        Node previous = null;
+        Node current = head;
+        while (c < k && current != null) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+            c++;
+        }
+
+        head.next = current;
+        head = previous;
+        while(c < 2*k && current != null){
+            previous = current;
+            current = current.next;
+            c++;
+        }
+        if (current != null) {
+            previous.next = reverseKNodesUsing2K(current, k);
+        }
+        return head;
+    }
+
 }
