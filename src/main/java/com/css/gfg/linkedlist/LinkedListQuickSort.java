@@ -2,6 +2,10 @@ package com.css.gfg.linkedlist;
 
 import com.css.gfg.linkedlist.LinkedList.Node;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+
 /**
  * Sort the given Linked List using quicksort. which takes O(n^2) time in worst case and O(nLogn) in average and best cases, otherwise you may get TLE.
  *
@@ -42,7 +46,7 @@ public class LinkedListQuickSort {
 
     public static void main(String[] args) {
         //LinkedList list = new LinkedList(1, 9, 3, 8, 2, 7, 6);
-        LinkedList list = new LinkedList(1, 9, 3, 8);
+       /* LinkedList list = new LinkedList(1, 9, 3, 8);
         Node head = list.getHead();
         LinkedList.printList(head);
         Node end = head;
@@ -52,8 +56,29 @@ public class LinkedListQuickSort {
 
         quickSort(head, head, end);
         System.out.println();
-        LinkedList.printList(head);
+        LinkedList.printList(head);*/
+        System.out.println(isBalanced("{[()]}"));
     }
+
+    static String isBalanced(String s) {
+        Map<Character, Character> map = new HashMap();
+        map.put('}', '{');
+        map.put(')', '(');
+        map.put(']', '[');
+
+        Stack<Character> stack = new Stack<Character>();
+        char c[] = s.toCharArray();
+        for(Character ch : c) {
+            Character match = map.get(ch);
+            if (match != null && !stack.isEmpty() && stack.peek().equals(match)) {
+                stack.pop();
+            } else {
+                stack.push(ch);
+            }
+        }
+        return stack.isEmpty()? "YES" : "NO";
+    }
+
 
     private static void quickSort(Node head, Node start,  Node end) {
         if (isStartBeforeEnd(start, end)) {
