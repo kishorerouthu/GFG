@@ -24,6 +24,8 @@ public class InfixToPostfix {
     public static void main(String[] args) {
         String infix = "a+b*c+d";  //abc*+d+
         infix = "a+b*(c^d-e)^(f+g*h)-i"; //abcd^e-fgh*+^*+i-
+        infix = "((a+b)*c-d)*e"; //ab+c*d-e*
+        infix = "a*(b+c)"; //abc+*
         String postfix = toPostfix(infix);
         System.out.println(postfix);
     }
@@ -34,7 +36,7 @@ public class InfixToPostfix {
         Stack<Character> stack = new Stack<Character>();
         int size = chars.length;
         for (int i=0; i<size; i++) {
-            char c = chars[i]; //
+            char c = chars[i];
             if(Character.isLetterOrDigit(c)) {
                 result.append(c);
             } else if(c == '(') {
