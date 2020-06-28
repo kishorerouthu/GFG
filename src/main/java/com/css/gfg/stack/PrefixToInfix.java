@@ -29,7 +29,6 @@ public class PrefixToInfix {
 
     private static String convertToInfix(String expression) {
         char[] chars = expression.toCharArray();
-        /*StringBuffer result = new StringBuffer();*/
         Stack<String> stack = new Stack();
         for (int i=chars.length-1; i>=0; i--) {
             char c = chars[i];
@@ -44,11 +43,10 @@ public class PrefixToInfix {
                 stack.push("(" + operand1 + c + operand2 + ")");
             }
         }
-        String result = stack.peek();
         if (stack.isEmpty()) {
             return "Invalid Expression";
         }
-        return result;
+        return stack.peek();
     }
 
     /** A utility function to return precedence of a given operator
