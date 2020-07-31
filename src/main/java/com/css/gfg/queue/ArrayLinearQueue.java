@@ -80,6 +80,10 @@ public class ArrayLinearQueue implements Queue<Integer> {
         System.out.println();
     }
 
+    public int size() {
+        return isEmpty()? 0 : (rear+1 - front);
+    }
+
     public static void main(String[] args) {
         Queue queue = new ArrayLinearQueue(5);
         queue.enqueue(10);

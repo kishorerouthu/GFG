@@ -7,4 +7,5 @@ public interface Queue<T> {
     boolean isFull();
     void delete();
     void print();
+    int size();
 }

@@ -43,6 +43,10 @@ public class QueueUsingStack implements Queue<Integer>{
         }
     }
 
+    public int size() {
+        return s1.size();
+    }
+
     public static void main(String[] args) {
         Queue queue = new QueueUsingStack();
         queue.enqueue(1);

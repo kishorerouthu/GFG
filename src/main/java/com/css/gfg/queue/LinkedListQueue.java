@@ -32,8 +32,8 @@ public class LinkedListQueue implements Queue<Integer> {
             front = node;
             rear = node;
         } else {
-            front.next = node;
-            front = node;
+            rear.next = node;
+            rear = node;
         }
     }
 
@@ -41,8 +41,8 @@ public class LinkedListQueue implements Queue<Integer> {
         if (isEmpty()) {
             throw new IllegalStateException("Queue is Empty...!");
         }
-        int data = rear.data;
-        rear = rear.next;
+        int data = front.data;
+        front = front.next;
         return data;
     }
 
@@ -60,13 +60,24 @@ public class LinkedListQueue implements Queue<Integer> {
     }
 
     public void print() {
-        LinkedList.Node temp = rear;
-        while (temp.next != null) {
+        LinkedList.Node temp = front;
+        while (temp != null) {
             System.out.println(temp.data);
             temp = temp.next;
         }
         System.out.println();
     }
+
+    public int size() {
+        int size = 0;
+        LinkedList.Node temp = front;
+        while (temp != null) {
+            size++;
+            temp = temp.next;
+        }
+        return size;
+    }
+
     public static void main(String[] args) {
         Queue queue = new LinkedListQueue();
         queue.enqueue(10);

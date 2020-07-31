@@ -70,6 +70,10 @@ public class ArrayCircularQueue implements Queue<Integer> {
         queue = null;
     }
 
+    public int size() {
+        return isEmpty()? 0 : (rear+1 - front);
+    }
+
     public void print() {
         if (isEmpty()) {
             throw new IllegalStateException("Queue is Empty...!");
