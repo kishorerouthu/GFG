@@ -56,7 +56,12 @@ public class Dequeue {
             throw new IllegalStateException("Queue is Empty...!");
         }
         int data = dequeue[front];
-        front = (front+1)%size;
+        if (front == rear) {
+            front = -1;
+            rear = -1;
+        } else {
+            front = (front + 1) % size;
+        }
         return data;
     }
 
@@ -65,7 +70,10 @@ public class Dequeue {
             throw new IllegalStateException("Queue is Empty...!");
         }
         int data = dequeue[rear];
-        if (rear == 0) {
+        if (front == rear) {
+            front = -1;
+            rear = -1;
+        }else if (rear == 0) {
             rear = size - 1;
         } else {
             rear--;
