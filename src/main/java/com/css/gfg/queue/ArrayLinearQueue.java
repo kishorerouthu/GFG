@@ -46,7 +46,11 @@ public class ArrayLinearQueue implements Queue<Integer> {
             throw new IllegalStateException("Queue is Empty...!");
         }
         int data = queue[front];
-        front++;
+        if (front == rear) {
+            front = rear = -1;
+        } else {
+            front++;
+        }
         return data;
     }
 
