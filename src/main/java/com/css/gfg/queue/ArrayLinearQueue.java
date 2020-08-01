@@ -55,7 +55,7 @@ public class ArrayLinearQueue implements Queue<Integer> {
     }
 
     public boolean isEmpty() {
-        return front == -1 || front == size-1;
+        return front == -1;
     }
 
     public boolean isFull() {
