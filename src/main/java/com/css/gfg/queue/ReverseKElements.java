@@ -53,9 +53,41 @@ public class ReverseKElements {
         dequeue.display();
     }
 
+    /**
+     * Method2 : Reverse using Stack & Queue
+     * 1. Push first K elements to Stack
+     * 2. Enqueue all the K elements from Stack to Queue
+     * 3. deque all the K elements from the Queue and Push back to Queue
+     */
+    public static void reverse1() {
+        int a[] = new int[] {50, 40, 30, 20, 10, 60, 70, 80, 90, 100};
+        int k = 5;
+        Queue<Integer> q = new ArrayCircularQueue(a);
+        Stack<Integer> s = new Stack<>();
+        q.print();
+
+        int c=0;
+        while (c < k) {
+            s.push(q.dequeue());
+            c++;
+        }
+
+        while (!s.isEmpty()) {
+            q.enqueue(s.pop());
+        }
+
+        c = 0;
+        while (c < k) {
+            q.enqueue(q.dequeue());
+            c++;
+        }
+
+        q.print();
+    }
 
     public static void main(String[] args) {
-        reverse();
+        //reverse();
+        reverse1();
     }
 
 }

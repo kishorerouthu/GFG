@@ -26,6 +26,13 @@ public class ArrayCircularQueue implements Queue<Integer> {
         rear = -1;
     }
 
+    public ArrayCircularQueue(int a[]) {
+        this(a.length);
+        for (int data : a) {
+            this.enqueue(data);
+        }
+    }
+
 
     public void enqueue(Integer data) {
         if(isFull()) {
@@ -45,15 +52,15 @@ public class ArrayCircularQueue implements Queue<Integer> {
         if(isEmpty()) {
             throw new IllegalStateException("Queue is empty...!");
         }
+        int data = queue[front];
         if (front == size-1) {
             front = 0;
-        }
-        if (front == rear) {
+        } else if (front == rear) {
             front = -1;
             rear = -1;
+        } else {
+            front++;
         }
-        int data = queue[front];
-        front++;
         return data;
     }
 
