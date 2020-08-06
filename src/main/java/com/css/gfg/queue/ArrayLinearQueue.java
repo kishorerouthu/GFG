@@ -84,6 +84,16 @@ public class ArrayLinearQueue implements Queue<Integer> {
         return isEmpty()? 0 : (rear+1 - front);
     }
 
+    @Override
+    public Integer front() {
+        return queue[front];
+    }
+
+    @Override
+    public Integer rear() {
+        return queue[rear];
+    }
+
     public static void main(String[] args) {
         Queue queue = new ArrayLinearQueue(5);
         queue.enqueue(10);

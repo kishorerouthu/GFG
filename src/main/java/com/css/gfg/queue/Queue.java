@@ -8,4 +8,6 @@ public interface Queue<T> {
     void delete();
     void print();
     int size();
+    T front();
+    T rear();
 }

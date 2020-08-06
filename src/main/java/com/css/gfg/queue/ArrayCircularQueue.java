@@ -81,6 +81,22 @@ public class ArrayCircularQueue implements Queue<Integer> {
         return isEmpty()? 0 : (rear+1 - front);
     }
 
+    @Override
+    public Integer front() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Queue is empty...!");
+        }
+        return queue[front];
+    }
+
+    @Override
+    public Integer rear() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Queue is empty...!");
+        }
+        return queue[rear];
+    }
+
     public void print() {
         if (isEmpty()) {
             throw new IllegalStateException("Queue is Empty...!");

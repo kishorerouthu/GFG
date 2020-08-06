@@ -78,6 +78,16 @@ public class LinkedListQueue implements Queue<Integer> {
         return size;
     }
 
+    @Override
+    public Integer front() {
+        return front.data;
+    }
+
+    @Override
+    public Integer rear() {
+        return rear.data;
+    }
+
     public static void main(String[] args) {
         Queue queue = new LinkedListQueue();
         queue.enqueue(10);

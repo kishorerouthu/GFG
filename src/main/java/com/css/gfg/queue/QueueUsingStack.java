@@ -47,6 +47,16 @@ public class QueueUsingStack implements Queue<Integer>{
         return s1.size();
     }
 
+    @Override
+    public Integer front() {
+        return s1.peek();
+    }
+
+    @Override
+    public Integer rear() {
+        throw new IllegalStateException("Operation not supported..!");
+    }
+
     public static void main(String[] args) {
         Queue queue = new QueueUsingStack();
         queue.enqueue(1);
