@@ -169,7 +169,7 @@ public class BinaryTree<T> {
         _postOrder(root);
     }
 
-    private void _postOrder(Node<T> node) {
+    public static void _postOrder(Node node) {
         //Base/Termination condition
         if (node == null) {
             return;
